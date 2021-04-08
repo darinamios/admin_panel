@@ -1,0 +1,11 @@
+:root {
+    --font-primary:'Ubuntu', sans-serif;
+    --text-color-primary:black;
+    --color-background-component:#FFFFFF;
+    --color-primary :#459DF5;
+}
+
+body {
+    font-family: var(--font-primary);
+}
+

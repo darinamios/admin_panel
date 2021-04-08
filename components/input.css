@@ -1,0 +1,67 @@
+:root {
+    --font-primary:'Ubuntu', sans-serif;
+    --text-color-primary:black;
+    --color-background-component:#FFFFFF;
+    --color-primary :#459DF5;
+    --color-error:#F53152;
+}
+.input-conrol label{
+    display: flex;
+    width: 256px;
+    height: 16px;
+    margin: 8px 0px;
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    color: var(-text-color-primary);
+    align-self: stretch;  
+}
+.input-conrol input {
+    display: inline-flex;
+    width: 256px;
+    height: 32px;
+    padding: 4px 4px 4px 8px;
+    align-items: center;
+    background: var(--color-background-component);
+    border: 1px solid var(--color-primary);
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-family: var(--font-primary);
+}
+
+.input-conrol input::placeholder {
+    flex: none;
+    margin: 0px 4px;
+    color: #BAD8F5;
+}
+
+.input-conrol.error input{
+    border: 1px solid var(--color-error);
+}
+.input-conrol.lock input{
+    background: #BAD8F5;
+}
+
+.input-conrol a.action-btn{
+    position: relative;
+    width: 10px;
+    height: 10px;
+    right: 22px;
+    border-radius: 4px;   
+    display: inline-flex;
+}
+.input-conrol a.action-btn.cancel{
+    background: no-repeat url("../resources/x-medium.svg");
+}
+.input-conrol a.action-btn.lock{
+    background: no-repeat url("../resources/locked.svg");
+}
+.input-conrol.empty a.action-btn{
+    display: none;
+}
+
+.input-conrol.lock input{
+    cursor: default;
+}
