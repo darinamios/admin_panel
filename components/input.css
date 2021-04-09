@@ -1,67 +1,73 @@
 :root {
     --font-primary:'Ubuntu', sans-serif;
+    --font-size: 13px;
     --text-color-primary:black;
     --color-background-component:#FFFFFF;
     --color-primary :#459DF5;
     --color-error:#F53152;
+    --color-placeholder-text:#BAD8F5;
+    --color-background-lock:#BAD8F5;
+}
+input, input:focus{
+    border:none;/**/
+    background-color: var(-color-background-component);
+}
+.input-conrol{
+    display: flex;
+    width: 256px;
+    height: 64px;
+    margin:0px 8px 8px 0px;
+    flex-direction: column;
 }
 .input-conrol label{
-    display: flex;
     width: 256px;
     height: 16px;
     margin: 8px 0px;
     font-family: var(--font-primary);
-    font-style: normal;
-    font-weight: normal;
-    font-size: 13px;
+    font-size: var(--font-size);
     line-height: 16px;
-    color: var(-text-color-primary);
-    align-self: stretch;  
+    color: var(--text-color-primary);
 }
-.input-conrol input {
-    display: inline-flex;
-    width: 256px;
+.input-row{
+    flex-direction: row;
+}
+.input-conrol input.edit-field, .input-conrol input.edit-field:focus {
+    width: 100%;
     height: 32px;
     padding: 4px 4px 4px 8px;
-    align-items: center;
     background: var(--color-background-component);
     border: 1px solid var(--color-primary);
-    box-sizing: border-box;
     border-radius: 4px;
     font-family: var(--font-primary);
+    margin-right: -16px;
 }
-
-.input-conrol input::placeholder {
+.input-conrol .edit-field::placeholder {
     flex: none;
     margin: 0px 4px;
-    color: #BAD8F5;
+    color: var(--color-placeholder-text);
 }
-
-.input-conrol.error input{
+.input-conrol.error .edit-field{
     border: 1px solid var(--color-error);
 }
-.input-conrol.lock input{
-    background: #BAD8F5;
+.input-conrol.lock .edit-field{
+    background: var(--color-background-lock);
 }
-
-.input-conrol a.action-btn{
+.input-conrol .action-btn{
     position: relative;
-    width: 10px;
-    height: 10px;
-    right: 22px;
-    border-radius: 4px;   
-    display: inline-flex;
+    width: 12px;
+    height: 12px;
+    right: 4px;
+    border: none;   
 }
-.input-conrol a.action-btn.cancel{
+.input-conrol .action-btn.cancel{
     background: no-repeat url("../resources/x-medium.svg");
 }
-.input-conrol a.action-btn.lock{
+.input-conrol .action-btn.lock{
     background: no-repeat url("../resources/locked.svg");
 }
-.input-conrol.empty a.action-btn{
+.input-conrol.empty .action-btn{
     display: none;
 }
-
 .input-conrol.lock input{
     cursor: default;
 }
