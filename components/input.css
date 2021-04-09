@@ -8,10 +8,6 @@
     --color-placeholder-text:#BAD8F5;
     --color-background-lock:#BAD8F5;
 }
-input, input:focus{
-    border:none;/**/
-    background-color: var(-color-background-component);
-}
 .input-conrol{
     display: flex;
     width: 256px;
@@ -31,6 +27,11 @@ input, input:focus{
 .input-row{
     flex-direction: row;
 }
+/*ребята, подскажите, пожалуйста, как убить ужасную черную рамку?
+в стилях вижу user agent stylesheet, но у моих стилей приоритет же...
+вобщем --v-- вот тут вижу, что input переопределился, а focus нет
+видела, что нужен important, но это не очень прям
+*/
 .input-conrol input.edit-field, .input-conrol input.edit-field:focus {
     width: 100%;
     height: 32px;
