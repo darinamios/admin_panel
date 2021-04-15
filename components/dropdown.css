@@ -1,0 +1,58 @@
+:root {
+    --color-primary :#459DF5;
+    --color-background-component:#FFFFFF;
+    --font-primary:'Ubuntu', sans-serif;
+    --font-size: 13px;
+    --text-color-primary:black;
+}
+/*checkbox css*/
+.checkbox-conrol{
+    display: flex;
+    width: 16px;
+    height: 16px;
+    margin:0px 8px 8px 0px;
+}
+.checkbox-conrol input{
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--color-primary);
+    border-radius: 4px;
+}
+.checkbox-conrol.check input{
+    background: no-repeat url("../resources/checkmark.svg");
+}
+.checkbox-conrol.uncheck input{
+    background: white;
+}
+/*dropdown css*/
+.dropdown-conrol{
+    width:160px;
+    background-color: var(--color-background-component);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1), 0px 4px 8px rgba(0, 0, 0, 0.1), 0px 2px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; 
+    padding: 8px 0; 
+    margin:0px 8px 8px 0px;;
+}
+.dropdown-conrol .item-row{
+    display: flex;
+    flex-direction: row;
+    padding: 4px 12px;
+    width: 100%;
+    height:32px;
+}
+.dropdown-conrol .item-row .checkbox-conrol{
+    width: 16px;
+    flex-direction: row;
+}
+.dropdown-conrol .item-row .item-name{
+    flex-direction: row;
+    font-family: var(--font-primary);
+    font-size: var(--font-size);
+    line-height: 16px;
+    color: var(--text-color-primary);
+}
+.dropdown-conrol.single .checkbox-conrol{
+    display:none;
+}
