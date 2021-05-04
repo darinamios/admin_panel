@@ -1,0 +1,90 @@
+:root {
+    --font-primary:'Ubuntu', sans-serif;
+    --font-size: 13px;
+    --text-color-primary:#8055FF;
+    --color-background:#FFFFFF;
+    --color-background-light:#A8A8FF;
+    --color-background-dark:#8055FF;
+
+    --color-primary :#459DF5;
+    --color-placeholder-text:#BAD8F5;
+    --color-button-hover-text:white;
+    --color-button-text:#459DF5;
+    --color-error:#F53152;
+    --color-background-lock:#BAD8F5;
+}
+.page {
+    display: flex;
+    flex-direction: column;
+    padding: 0 32px;
+    background: var(--color-background);
+    align-items: stretch;
+    justify-content: space-between;
+    height: 100%;
+}
+.page .page-header{
+    display: flex;
+    background: var(--color-background-light);
+    height: 32px;
+    padding: 0 4px;
+    width: 100%;
+    margin: 0 20px 20px 0;
+}
+.page .page-header label{
+    font-family: var(--font-primary);
+    font-size: var(--font-size);
+    color: var(--text-color-primary);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 32px;
+}
+.page .filter-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: var(--color-background);
+    width: 100%;
+    height: 32px;
+    margin: 0 20px 20px 0;
+
+}
+.page .filter-row .filter-group{
+    background:var(--color-background-dark);
+    height: 32px;
+    width: 256px;
+}
+.page .filter-row .filter-item{
+    background:var(--color-background-dark);
+    width: 32px;
+    height: 32px;
+}
+.page .grid-frame{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 20px 20px 0;
+}
+.page .grid-frame .grid-header{
+    width: 100%;
+    height: 48px;    
+    background:var(--color-background-dark);
+    align-self: flex-start;
+    display:flex;
+}
+.page .grid-frame .grid-footer{
+    width: 100%;
+    height: 48px;    
+    background:var(--color-background-dark);
+    align-self: flex-end;
+    display:flex;
+}
+.page .grid-frame .grid-body{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    background:var(--color-background-light);
+}
