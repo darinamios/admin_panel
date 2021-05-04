@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Popup Controls</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="popup.css">
+    </head>
+    <body>
+        <div class='go-to-page-conrol'>
+           <!--  .<label>Номер страницы</label>
+            <input class="to-num" placeholder="Введите номер"> -->
+            <div class='input-conrol empty'>
+                <label>Номер страницы</label>
+                <div class="input-row">
+                    <input class="edit-field" placeholder="Введите номер" ></input>
+                    <input type="button" class ="action-btn cancel"></input>
+                </div>
+            </div>
+        </div>
+        <div class='confirm-conrol'>
+            <label>Удалить n записей?</label>
+            <div class='button-conrol small text-only'>
+                <div class="img-button"></div>
+                <input type="button" class="button-body" value="Удалить"></input>
+            </div>
+            <div class='button-conrol small text-only'>
+                <div class="img-button"></div>
+                <input type="button" class="button-body" value="Отмена"></input>
+            </div>
+        </div>
+        <div class='theme-control'>
+            <label>Выберите тему</label>
+            <div class='button-conrol small text-and-icon'>
+                <div class="img-button light"></div>
+                <input type="button" class="button-body" value="Светлая"></input>
+            </div>
+            <div class='button-conrol small text-and-icon'>
+                <div class="img-button dark"></div>
+                <input type="button" class="button-body" value="Темная"></input>
+            </div>
+        </div>
+    </body>
+</html>
