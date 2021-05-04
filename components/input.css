@@ -1,0 +1,74 @@
+:root {
+    --font-primary:'Ubuntu', sans-serif;
+    --font-size: 13px;
+    --text-color-primary:black;
+    --color-background-component:#FFFFFF;
+    --color-primary :#459DF5;
+    --color-error:#F53152;
+    --color-placeholder-text:#BAD8F5;
+    --color-background-lock:#BAD8F5;
+}
+.input-conrol{
+    display: flex;
+    width: 256px;
+    height: 64px;
+    margin:0px 8px 8px 0px;
+    flex-direction: column;
+}
+.input-conrol label{
+    width: 256px;
+    height: 16px;
+    margin: 8px 0px;
+    font-family: var(--font-primary);
+    font-size: var(--font-size);
+    line-height: 16px;
+    color: var(--text-color-primary);
+}
+.input-row{
+    flex-direction: row;
+}
+/*ребята, подскажите, пожалуйста, как убить ужасную черную рамку?
+в стилях вижу user agent stylesheet, но у моих стилей приоритет же...
+вобщем --v-- вот тут вижу, что input переопределился, а focus нет
+видела, что нужен important, но это не очень прям
+*/
+.input-conrol input.edit-field, .input-conrol input.edit-field:focus {
+    width: 100%;
+    height: 32px;
+    padding: 4px 4px 4px 8px;
+    background: var(--color-background-component);
+    border: 1px solid var(--color-primary);
+    border-radius: 4px;
+    font-family: var(--font-primary);
+    margin-right: -16px;
+}
+.input-conrol .edit-field::placeholder {
+    flex: none;
+    margin: 0px 4px;
+    color: var(--color-placeholder-text);
+}
+.input-conrol.error .edit-field{
+    border: 1px solid var(--color-error);
+}
+.input-conrol.lock .edit-field{
+    background: var(--color-background-lock);
+}
+.input-conrol .action-btn{
+    position: relative;
+    width: 12px;
+    height: 12px;
+    right: 4px;
+    border: none;   
+}
+.input-conrol .action-btn.cancel{
+    background: no-repeat url("../resources/x-medium.svg");
+}
+.input-conrol .action-btn.lock{
+    background: no-repeat url("../resources/locked.svg");
+}
+.input-conrol.empty .action-btn{
+    display: none;
+}
+.input-conrol.lock input{
+    cursor: default;
+}
