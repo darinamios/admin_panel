@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import TextEditor from './components/TextEditor';
+import Calendar from './components/Calendar';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <TextEditor name="Тут будет ваш текст" emptyText="Вбивай уже..." value="some text"/>
+    <Calendar name="Тут будет ваша дата" emptyText="Вбивай уже..."/>
   </React.StrictMode>,
   document.getElementById('root')
 );
