@@ -1,0 +1,76 @@
+/*@import "main.css";*/
+:root {
+    --font:'Ubuntu', sans-serif;
+    --font-size: 14px;
+    --text-color:black;
+    --background:#FFFFFF;
+    --color-primary :#459DF5;
+    --color-error:#F53152;
+    --color-placeholder:#BAD8F5;
+    --color-lock:#BAD8F5;
+    --margin: 0 0.5rem 0.5rem 0;
+}
+/*main styles*/
+.text-editor{
+    display: flex;
+    flex-direction: column;
+    min-width: 18rem;
+    max-width: 20rem;
+    height: 4.5rem;
+    margin: var(--margin);
+    font-family: var(--font);
+    font-size: var(--font-size);
+    line-height: 1.2rem;
+    color: var(--text-color);   
+}
+.text-editor label{
+    width: 100%;
+    height: 1.2rem;
+    margin-bottom: 0.2rem;
+}
+.text-editor__edit_row{
+    display:flex;
+    flex-direction:row;
+}
+.edit_row__edit-field, .edit_row__edit-field:focus {
+    display:flex;
+    width: 100%;
+    height: 1.2rem;
+    padding: 0.2rem 0.2rem 0.2rem 0.4rem;
+    background: var(--background);
+    border: 0.08rem solid var(--color-primary);
+    border-radius: 0.2rem;
+    margin-right: -1.2rem;
+    outline: none;
+}
+.edit_row__edit-field::placeholder {
+    flex: none;
+    margin: 0 0.2rem;
+    color: var(--color-placeholder);
+}
+.edit_row__btn-cancel{
+    display: flex;
+    position: relative;
+    width: 0.8rem;
+    height: 0.8rem;
+    right: 0.1rem;
+    top: 0.5rem;
+    border: none; 
+    outline:none; 
+    background: no-repeat url("../resources/x-medium.svg"); 
+}
+/*state styles*/
+.text-editor.error .edit_row__edit-field{
+    border: 1px solid var(--color-error);
+}
+.text-editor.lock .edit_row__edit-field{
+    background: var(--color-lock);
+    cursor: default;
+}
+.text-editor.lock .edit_row__btn-cancel{
+    background: no-repeat url("../resources/locked.svg");
+}
+.text-editor.empty .edit_row__btn-cancel{
+    display: none;
+}
+

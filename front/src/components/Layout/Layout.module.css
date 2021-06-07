@@ -1,0 +1,10 @@
+@import '../variables.css';
+.layout {
+    display: flex;
+    flex-direction: column;
+    padding: 0 32px;
+    background: var(--main-background);
+    align-items: stretch;
+    justify-content: space-between;
+    height: 100%;
+}

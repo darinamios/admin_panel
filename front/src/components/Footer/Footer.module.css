@@ -1,0 +1,8 @@
+@import '../variables.css';
+.footer{
+    width: 100%;
+    height: 48px;    
+    background:var(--background-dark);
+    align-self: flex-end;
+    display:flex;
+}

@@ -1,0 +1,16 @@
+@import '../variables.css';
+.header{
+    width: 100%;
+    height: 40px;    
+    background:var(--color-primary);
+    flex-wrap: wrap;
+    color:var(--header-text);
+    display:flex;
+}
+.header_cell{
+    align-self:stretch;
+    flex-direction: column;
+    display:flex;
+    justify-content: space-between;
+    padding:6px;
+}

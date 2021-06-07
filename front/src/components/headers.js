@@ -1,0 +1,33 @@
+export default
+[
+    {
+        text:"#",
+        flex:"1",
+        name:"hash"
+    },
+    {
+        text:"Дата",
+        flex:"3",
+        name:"date"
+    },
+    {
+        text:"Статус",
+        flex:"3",
+        name:"status"
+    },
+    {
+        text:"Позиций",
+        flex:"1",
+        name:"positions"
+    },
+    {
+        text:"Сумма",
+        flex:"2",
+        name:"sum"
+    },
+    {
+        text:"ФИО покупателя",
+        flex:"5",
+        name:"client"
+    }
+];

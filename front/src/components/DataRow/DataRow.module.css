@@ -1,0 +1,13 @@
+.header_cell{
+    align-self:stretch;
+    flex-direction: column;
+    display:flex;
+    justify-content: space-between;
+    padding:6px;
+}
+.row{
+    display:flex;
+    flex-direction: row;
+    margin:12px 8px;
+    width:100%;
+}
