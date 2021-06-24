@@ -1,22 +1,21 @@
 import React from 'react';
+import { useSelector} from 'react-redux';
 import styles from './Table.module.css';
-import { useSelector } from 'react-redux';
 import DataRow from '../DataRow/DataRow';
 import HeadRow from '../HeadRow/HeadRow';
 import Footer from '../Footer/Footer';
+import {getFilterPagingOrders} from '../../features/orders/ordersSlice';
 
-function Table(props) {
-    const {headers} = props;
-    const columns = Object.assign({}, ...headers.map(head => ({[head.name]: head.flex})));
-    const orders = useSelector((state) => state.orders);
-    const dataElements = orders.map(order =>
-        <DataRow key={order.hash} hash={order.hash} dataObj={order} columns={columns}/>
+const Table = () =>  {
+    //get data
+    const orderRows = useSelector(getFilterPagingOrders).map(order =>
+        <DataRow key={order.id + order.hash} id={order.id}/>
     );
     return (
        <div className={styles.frame}>
-            <HeadRow headers = {headers} columns={columns}/>
+            <HeadRow/>
             <div className={styles.body}>
-               {dataElements}
+               {orderRows}
             </div>
            <Footer/>
         </div>

@@ -2,7 +2,7 @@
 .footer{
     width: 100%;
     height: 48px;    
-    background:var(--background-dark);
+    background:var(--header-text);
     align-self: flex-end;
     display:flex;
 }

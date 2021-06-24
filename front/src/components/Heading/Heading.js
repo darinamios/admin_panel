@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from './Header.module.css';
+import styles from './Heading.module.css';
 
-function Header() {
+function Heading() {
     return (
-        <div className={styles.header}>
+        <div className={styles.heading}>
             <label className={styles.label}>Список заказов</label> 
         </div>
     );
   }
-  export default Header;
+  export default Heading;

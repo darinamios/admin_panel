@@ -1,5 +1,5 @@
 @import '../variables.css';
- .header{
+ .heading{
     display: flex;
     height: 32px;
     padding: 0 4px;

@@ -1,16 +1,20 @@
 import React from 'react';
+import { useSelector} from 'react-redux';
 import styles from './DataRow.module.css';
+import {getColumnsFlex, ordersSelector} from '../../features/orders/ordersSlice';
 
-function DataRow(props) {
-    const {hash, dataObj, columns} = props;
-    const cells = Object.entries(dataObj).map(([key, value]) => {
+const DataRow = ({id}) => {
+    //get data
+    const columnsFlex = useSelector(getColumnsFlex);
+    const filteredOrders = useSelector(ordersSelector).filter(val => val.id === id);
+    const cells = Object.entries(filteredOrders[0]).map(([key, value]) => {
         return (
-            <div key = {key} className={styles.header_cell} style={{flex:columns[key]}}>{value}</div>
+            key !== "id" ? <div key = {key} className={styles.header_cell} style={{flex:columnsFlex[key]}}>{value}</div> : ''
         );
     });
     return (
-        <div key = {hash} className={styles.row}>
-           {cells}
+        <div key = {'row' + id} className={styles.row}>
+          {cells}
         </div>
     );
   }

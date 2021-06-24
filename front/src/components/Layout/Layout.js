@@ -1,16 +1,15 @@
 import React from 'react';
 import styles from './Layout.module.css';
-import Header from '../Header/Header';
+import Heading from '../Heading/Heading';
 import Table from '../Table/Table';
-import headers from '../headers';
-import Search from '../Search/Search';
+import FilterBlock from '../FilterBlock/FilterBlock';
 
-function Layout() {
+const Layout = () => {
     return (
         <div className ={styles.layout}>
-            <Header/>
-            <Search placeholder="Номер заказа или ФИО"/>
-            <Table headers={headers}></Table>
+            <Heading/>
+            <FilterBlock/>
+            <Table/>
         </div>
     );
   }
