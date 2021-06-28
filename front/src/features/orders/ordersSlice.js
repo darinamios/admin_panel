@@ -174,7 +174,8 @@ export const ordersSlice = createSlice({
 			const orders = action.payload;
             const existsInSelected = (id) => {
                 for(let ord of orders){
-                    if (ord.toString() === id.toString)
+                   console.log(ord.toString() , id.toString());
+                    if (ord.toString() === id.toString())
                         return true;
                 }
                 return false;
