@@ -40,6 +40,6 @@
     background: no-repeat url("../icons/x-medium.svg");
 }
 .empty{
-    display: none;
+    background: none;
 }
  

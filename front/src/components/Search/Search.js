@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
 import styles from './Search.module.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 
 const Search = ({editorSelector, onChange, onCancel}) => {
     //get data
     const {filterValue, placeholder} = useSelector(editorSelector);
-    const dispatch = useDispatch();
     //state
     const [isEmpty, setEmpty] = useState(!filterValue);
     //handlers
     const handleCancel = (event) => {
         console.log('handleCancel');
         setEmpty(true);
-        dispatch(onCancel())
+        onCancel();
     }
     const handleInput = (event) => {
         const textValue = event.target.value;
         console.log('handleInput', textValue);
         setEmpty(!textValue);
-        dispatch(onChange(textValue));
+        onChange(textValue);
     }
     const btnClass = isEmpty ? styles.cancel  + ' ' +  styles.empty : styles.cancel;
     return (

@@ -1,115 +1,116 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
-import { getAllFilters } from '../filter/filterSlice';
+import { getAllFilters, statusFilterSelector, statusesSelector } from '../filter/filterSlice';
 import {activePageSelector, pageSizeSelector} from '../paging/pagingSlice';
+import {sortedFieldSelector} from '../sort/sortSlice';
 
 //set initial order array
 const initialState = {
     ordersData: [
         {
             id : 1,
-            hash:'12345',
-            date: '06/08/2020',
-            status:'Выполнен',
+            hash:1,
+            date: Date.parse('2020-08-06'),
+            status:'resolved',
             position:1,
             sum:2000,
             client:'Pogorelskaya Darya'
         },
         {
             id : 2,
-            hash:'54321',
-            date: '06/08/2020',
-            status:'Отложен',
+            hash:2,
+            date: Date.parse('2020-01-07'),
+            status:'postponed',
             position:1,
             sum:1000,
             client:'Pogorelskiy Alex'
         },
         {   
             id : 3,
-            hash:'46241',
-            date: '08/01/2021',
-            status:'Новый',
+            hash:3,
+            date: Date.parse('2021-01-08'),
+            status:'new',
             position:1,
             sum:1500,
             client:'Pogorelskiy Ilya'
         },
         {
             id : 4,
-            hash:'12345',
-            date: '06/08/2020',
-            status:'Выполнен',
+            hash:4,
+            date: Date.parse('2020-08-06'),
+            status:'resolved',
             position:1,
             sum:2000,
             client:'Pogorelskaya Darya'
         },
         {
             id : 5,
-            hash:'54321',
-            date: '06/08/2020',
-            status:'Отложен',
+            hash:5,
+            date: Date.parse('2020-01-07'),
+            status:'postponed',
             position:1,
             sum:1000,
             client:'Pogorelskiy Alex'
         },
         {   
             id : 6,
-            hash:'46241',
-            date: '08/01/2021',
-            status:'Новый',
+            hash:6,
+            date: Date.parse('2021-01-08'),
+            status:'new',
             position:1,
             sum:1500,
             client:'Pogorelskiy Ilya'
         },
         {
             id : 7,
-            hash:'12345',
-            date: '06/08/2020',
-            status:'Выполнен',
+            hash:7,
+            date: Date.parse('2020-08-06'),
+            status:'resolved',
             position:1,
             sum:2000,
             client:'Pogorelskaya Darya'
         },
         {
             id : 8,
-            hash:'54321',
-            date: '06/08/2020',
-            status:'Отложен',
+            hash:8,
+            date: Date.parse('2020-01-07'),
+            status:'postponed',
             position:1,
             sum:1000,
             client:'Pogorelskiy Alex'
         },
         {   
             id : 9,
-            hash:'46241',
-            date: '08/01/2021',
-            status:'Новый',
+            hash:9,
+            date: Date.parse('2021-01-08'),
+            status: 'new',
             position:1,
             sum:1500,
             client:'Pogorelskiy Ilya'
         },
         {
             id : 10,
-            hash:'12345',
-            date: '06/08/2020',
-            status:'Выполнен',
+            hash:10,
+            date: Date.parse('2020-08-06'),
+            status:'resolved',
             position:1,
             sum:2000,
             client:'Pogorelskaya Darya'
         },
         {
             id : 11,
-            hash:'54321',
-            date: '06/08/2020',
-            status:'Отложен',
+            hash:11,
+            date: Date.parse('2020-01-07'),
+            status:'postponed',
             position:1,
             sum:1000,
             client:'Pogorelskiy Alex'
         },
         {   
             id : 12,
-            hash:'46241',
-            date: '08/01/2021',
-            status:'Новый',
+            hash:12,
+            date: Date.parse('2021-01-08'),
+            status:'new',
             position:1,
             sum:1500,
             client:'Pogorelskiy Ilya'
@@ -135,8 +136,8 @@ const initialState = {
         {
             text:"Позиций",
             flex:"1",
-            name:"positions"
-        },
+            name:"position"
+        }, 
         {
             text:"Сумма",
             flex:"2",
@@ -147,24 +148,32 @@ const initialState = {
             flex:"5",
             name:"client"
         }
-    ]    
+    ] , 
+    maxId : 12, 
+    maxHash : 12   
   };
-
+const getFormatDate = (date, delimiter) =>{
+    const formatMap = [{day:'2-digit'}, {month:'2-digit'}, {year:'numeric'}]; 
+    const format = (m) => new Intl.DateTimeFormat('en', m).format(date);
+    return formatMap.map(format).join(delimiter);
+}
 //slice with reducers
 export const ordersSlice = createSlice({
 	name: 'orders',
 	initialState,
 	reducers: {
 		addOrder: (state, action) => {
-			const order = {
-				date: new Date(),
-                hash:'12345',
-                status:'Новый',
-                position:action.payload.position,
-				sum: action.payload.sum,
-				client: action.payload.client,
-			};
-			state.push(order);
+			const order = action.payload;
+            state.maxId += 1;
+            order.id = state.maxId;
+            state.maxHash += 1;
+            order.hash = state.maxHash;
+			state.ordersData.push(order);
+		},
+        deleteOrders: (state, action) => {
+			const orders = action.payload;
+            const filteredOrders = state.ordersData.ordersData.filter(item => !orders.find(item.id));
+            console.log(filteredOrders);
 		},
 	},
 });
@@ -183,22 +192,98 @@ export const getColumnsFlex = createSelector(
      },{})
     }
   );
+
+export const getSortedOrders = createSelector(
+    [ordersSelector, sortedFieldSelector, statusesSelector],
+    (orders, sortedField, statuses) => {
+        const sorted =[].concat(orders);
+        const {field, direction} = sortedField; 
+        let first, second = 0;
+        if(direction === 0){
+            first = 1; second = -1;
+        } else{
+            first = -1; second = 1;
+        };
+        switch(field){
+            case 'date':
+                console.log('sort date');
+                sorted.sort((a, b) => new Date(a.date) > new Date(b.date) ? first : second);
+                return sorted;
+            case 'status':
+                console.log('sort status');
+                sorted.sort((a, b) => statuses.get(a.status).text  > statuses.get(b.status).text ? first : second);
+                return sorted;
+            case 'position':
+                console.log('sort position');
+                sorted.sort((a, b) => a.position > b.position ? first : second);
+                return sorted;
+            case 'sum':
+                console.log('sort sum');
+                sorted.sort((a, b) => a.sum > b.sum ? first : second);
+                return sorted;
+            default:
+                console.log('sort default');
+                sorted.sort((a, b) => a.id > b.id ? first : second);
+                return sorted;
+        }                    
+    }
+ );
 export const getFilteredOrders = createSelector(
-    [ordersSelector, getAllFilters],
-    (orders, filters) => {
+    [getSortedOrders, getAllFilters, statusFilterSelector],
+    (orders, filters, statuses) => {
+        const hasStatus = (status, statuses) =>{
+            if(statuses.length === 0) return true;
+            for(let st of statuses){
+                if(status === st) return true;
+            }
+            return false;
+        }; 
         return  orders.filter(order => !filters["main"] ? order : order.hash.includes(filters["main"]) 
                                                                 ||order.client.includes(filters["main"]) )
                       .filter(order => !filters["sumFrom"] ? order : order.sum >= filters["sumFrom"])
                       .filter(order => !filters["sumTo"] ? order : order.sum <= filters["sumTo"])
+                      .filter(order => !filters["dateFrom"] ? order : new Date(order.date) >= new Date(filters["dateFrom"]))
+                      .filter(order => !filters["dateTo"] ? order : new Date(order.date) <= new Date(filters["dateTo"]))
+                      .filter(order => hasStatus(order.status, statuses))
                       
     }
   );
 
-export const getFilterPagingOrders = createSelector(
+
+
+export const getPagingOrders = createSelector(
     [getFilteredOrders, activePageSelector, pageSizeSelector],
     (orders, activePage, pageSize) => {
         const offset = (activePage - 1) * pageSize;
         return  orders.slice(offset, offset + pageSize);                      
+    }
+  );
+
+  export const getActiveIds = createSelector(
+    [getPagingOrders],
+    (orders) => {
+        return  orders.map(order => order.id);                      
+    }
+  );
+
+  export const getFormatedOrders = createSelector(
+    [getPagingOrders, statusesSelector],
+    (orders, statuses) => {
+        const formatted = [];
+        for(let order of orders){
+            formatted.push(
+                {
+                    id: order.id,
+                    hash: order.hash,
+                    date: getFormatDate(new Date(order.date), '.'),
+                    status: statuses.get(order.status).text,
+                    position: order.position,
+                    sum: new Intl.NumberFormat().format(order.sum),
+                    client: order.client
+                }
+            );
+        }
+        return formatted;                      
     }
   );
 //reducer

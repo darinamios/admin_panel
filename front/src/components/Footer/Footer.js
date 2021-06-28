@@ -1,22 +1,31 @@
 import React from 'react';
 import styles from './Footer.module.css';
 import Paging from '../Paging/Paging';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 import {
-    getPageCount,
-    activePageSelector
-} from '../../features/paging/pagingSlice';
+    getSelectedItemsCount,
+    selectedItemsSelector
+} from '../../features/actions/actionsSlice';
+import Button from '../Button/Button';
 
 const Footer = () => {
     //get data
-    const pagesCount = useSelector(getPageCount);
-    const activePage = useSelector(activePageSelector);
+    const itemsCount = useSelector(getSelectedItemsCount);
+    const items = useSelector(selectedItemsSelector);
+    //const activePage = useSelector(activePageSelector);
     //const dispatch = useDispatch(); 
+    const deleteOrders = () =>{
+      console.log('deleteOrders', items);
+    };
     return (
         <div className={styles.footer}>
-            Pages count {pagesCount}
-            ActivePage {activePage}
+          <div className={styles.left}>
+            Выделено позиций {itemsCount}
+            <Button text="Удалить" onClickHandler={deleteOrders} width = '128px'/>
+          </div>
+           <div className={styles.right}>
             <Paging/>
+            </div>
         </div>
     );
   }

@@ -7,16 +7,15 @@
 }
 .label{
     height: 16px;
-    margin: 8px 0px;
-    font-family: var(--font);
+    margin: 0px;
+    font: var(--font);
     font-size: var(--font-size);
-    line-height: 16px;
 }
 .text_input{
     display: flex;
     width: 142px;
     height: 28px;
-    margin: 0px 10px 10px 0px;
+    margin: 8px 10px 10px 0px;
 }
 .pre{
     flex: none;
@@ -24,8 +23,10 @@
     content: "c";
     width: 16px;
     height: 16px;
-    top: 8px;
+    top: 9px;
     left: 4;
+    font: var(--font);
+    font-size: var(--font-size);
 }
 .field, .field:focus {
     width: 100%;
@@ -38,6 +39,8 @@
     border-radius: 4px;
     font-family: var(--font);
     outline: none;
+    font: var(--font);
+    font-size: var(--font-size);
 }
 .field::placeholder {
     color: var(--placeholder);
@@ -52,6 +55,6 @@
     background: no-repeat url("../icons/x-medium.svg");
 }
 .empty{
-    display: none;
+    background: none;
 }
  

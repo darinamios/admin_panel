@@ -37,7 +37,6 @@ export const getPageCount = createSelector(
     [pageSizeSelector],
     (size) => {
   		const count = Math.floor(12/size) + 1;
-		console.log(count);
 		return count;
     }
   );
