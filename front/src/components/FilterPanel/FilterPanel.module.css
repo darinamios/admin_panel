@@ -1,0 +1,10 @@
+@import '../variables.css';
+ .filterPanel{
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    padding: 0 4px;
+    width: 100%;
+    background-color: var(--header-text);
+}
+

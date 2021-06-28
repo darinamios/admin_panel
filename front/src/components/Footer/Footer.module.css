@@ -1,0 +1,17 @@
+@import '../variables.css';
+.footer{
+    width: 100%;
+    height: 30px;    
+    background:var(--header-text);
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:8px;
+}
+.left{
+    color:var(--color-primary);
+    font:var(--font);
+    vertical-align:middle;
+    display:flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,11 @@
+:root {
+    --font:'Ubuntu', sans-serif;
+    --font-size: 13px;
+    --font-color:#8055FF;
+    --background-light:#A8A8FF;
+    --main-background:#FFFFFF;
+    --background-dark:#8055FF;
+    --color-primary:  #459DF5;
+    --header-text:#EBF0F5;
+    --placeholder:#BAD8F5;
+}
