@@ -172,13 +172,21 @@ export const ordersSlice = createSlice({
 		},
         deleteOrders: (state, action) => {
 			const orders = action.payload;
-            const filteredOrders = state.ordersData.ordersData.filter(item => !orders.find(item.id));
-            console.log(filteredOrders);
+            const existsInSelected = (id) => {
+                for(let ord of orders){
+                    if (ord.toString() === id.toString)
+                        return true;
+                }
+                return false;
+            };
+            console.log('orders', orders);
+            state.ordersData = state.ordersData.filter(item => !existsInSelected(item.id));
+            console.log(state.ordersData);
 		},
 	},
 });
 //actions
-export const { addOrder } = ordersSlice.actions;
+export const { addOrder, deleteOrders } = ordersSlice.actions;
 //selectors
 export const ordersSelector = (state) => state.orders.ordersData;
 export const headersSelector = (state) => state.orders.headers;
@@ -238,7 +246,7 @@ export const getFilteredOrders = createSelector(
             }
             return false;
         }; 
-        return  orders.filter(order => !filters["main"] ? order : order.hash.includes(filters["main"]) 
+        return  orders.filter(order => !filters["main"] ? order : order.hash.toString().includes(filters["main"]) 
                                                                 ||order.client.includes(filters["main"]) )
                       .filter(order => !filters["sumFrom"] ? order : order.sum >= filters["sumFrom"])
                       .filter(order => !filters["sumTo"] ? order : order.sum <= filters["sumTo"])

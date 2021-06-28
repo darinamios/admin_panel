@@ -40,16 +40,6 @@ export const getPageCount = createSelector(
 		return count;
     }
   );
-  export const getPageNumbers = createSelector(
-    [getPageCount],
-    (count) => {
-		const range = [];
-		for(let i = 1; i <= count; ++i){
-			range.push(i);
-		}
-		return range;
-    }
-  );
 /*export const getPageCount = createSelector(
     [getFilteredOrders, pageSizeSelector],
     (orders, size) => {
@@ -59,5 +49,16 @@ export const getPageCount = createSelector(
 		return count;
     }
   );*/
+export const getPageNumbers = createSelector(
+    [getPageCount],
+    (count) => {
+		const range = [];
+		for(let i = 1; i <= count; ++i){
+			range.push(i);
+		}
+		return range;
+    }
+  );
+
 //reducer
 export default pagingSlice.reducer;
